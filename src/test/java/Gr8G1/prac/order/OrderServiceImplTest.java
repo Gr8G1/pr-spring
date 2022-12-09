@@ -7,15 +7,15 @@ import Gr8G1.prac.member.MemberRepository;
 import Gr8G1.prac.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceImplTest {
-  AppConfig appConfig = new AppConfig();
-  MemberRepository memberRepository = appConfig.memberRepository();
-  MemberService memberService = appConfig.memberService(memberRepository);
-  OrderService orderService = appConfig.orderService(memberRepository);
+  AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+  MemberService memberService = ac.getBean("memberService", MemberService.class);
+  OrderService orderService = ac.getBean("orderService", OrderService.class);
 
   @Test
   @DisplayName("VIP 할인 주문 테스트")
