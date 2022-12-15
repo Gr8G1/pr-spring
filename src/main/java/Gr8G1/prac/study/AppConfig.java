@@ -1,14 +1,14 @@
-package Gr8G1.prac;
+package Gr8G1.prac.study;
 
-import Gr8G1.prac.discount.DiscountPolicy;
-import Gr8G1.prac.discount.FixedDiscountPolicyImpl;
-import Gr8G1.prac.discount.RateDiscountPolicyImpl;
-import Gr8G1.prac.member.MemberMemoryRepositoryImpl;
-import Gr8G1.prac.member.MemberRepository;
-import Gr8G1.prac.member.MemberService;
-import Gr8G1.prac.member.MemberServiceImpl;
-import Gr8G1.prac.order.OrderService;
-import Gr8G1.prac.order.OrderServiceImpl;
+import Gr8G1.prac.study.discount.DiscountPolicy;
+import Gr8G1.prac.study.discount.FixedDiscountPolicyImpl;
+import Gr8G1.prac.study.discount.RateDiscountPolicyImpl;
+import Gr8G1.prac.study.member.MemberMemoryRepositoryImpl;
+import Gr8G1.prac.study.member.MemberRepository;
+import Gr8G1.prac.study.member.MemberService;
+import Gr8G1.prac.study.member.MemberServiceImpl;
+import Gr8G1.prac.study.order.OrderService;
+import Gr8G1.prac.study.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

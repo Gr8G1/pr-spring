@@ -1,7 +1,9 @@
-package Gr8G1.prac.member;
+package Gr8G1.prac.study.member;
 
-import Gr8G1.prac.AppConfig;
-import Gr8G1.prac.order.OrderService;
+import Gr8G1.prac.study.AppConfig;
+import Gr8G1.prac.study.member.Member;
+import Gr8G1.prac.study.member.MemberGrade;
+import Gr8G1.prac.study.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

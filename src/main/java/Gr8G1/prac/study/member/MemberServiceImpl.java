@@ -1,4 +1,4 @@
-package Gr8G1.prac.member;
+package Gr8G1.prac.study.member;
 
 public class MemberServiceImpl implements MemberService {
   private final MemberRepository memberRepository;

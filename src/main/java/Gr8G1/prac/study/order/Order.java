@@ -1,4 +1,4 @@
-package Gr8G1.prac.order;
+package Gr8G1.prac.study.order;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

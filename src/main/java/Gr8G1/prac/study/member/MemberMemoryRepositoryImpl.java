@@ -1,4 +1,4 @@
-package Gr8G1.prac.member;
+package Gr8G1.prac.study.member;
 
 import java.util.HashMap;
 

@@ -1,8 +1,8 @@
-package Gr8G1.prac.order;
+package Gr8G1.prac.study.order;
 
-import Gr8G1.prac.discount.DiscountPolicy;
-import Gr8G1.prac.member.Member;
-import Gr8G1.prac.member.MemberRepository;
+import Gr8G1.prac.study.discount.DiscountPolicy;
+import Gr8G1.prac.study.member.Member;
+import Gr8G1.prac.study.member.MemberRepository;
 
 public class OrderServiceImpl implements OrderService {
   private final MemberRepository memberRepository;

@@ -1,4 +1,4 @@
-package Gr8G1.prac.lifecycle;
+package Gr8G1.prac.study.lifecycle;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

@@ -1,7 +1,7 @@
-package Gr8G1.prac.discount;
+package Gr8G1.prac.study.discount;
 
-import Gr8G1.prac.member.Member;
-import Gr8G1.prac.member.MemberGrade;
+import Gr8G1.prac.study.member.Member;
+import Gr8G1.prac.study.member.MemberGrade;
 
 public class RateDiscountPolicyImpl implements DiscountPolicy {
   @Override

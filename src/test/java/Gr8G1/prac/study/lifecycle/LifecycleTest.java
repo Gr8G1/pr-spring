@@ -1,4 +1,4 @@
-package Gr8G1.prac.lifecycle;
+package Gr8G1.prac.study.lifecycle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
