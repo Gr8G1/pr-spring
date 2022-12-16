@@ -3,6 +3,7 @@ package Gr8G1.prac.section.coffee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/v1/coffees")
+@RequestMapping(value = "/v1/coffees", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CoffeeController {
   @PostMapping
   public ResponseEntity<Map<String, String>> postMember(
