@@ -1,4 +1,4 @@
-package Gr8G1.prac.section.rest;
+package Gr8G1.prac.restTemplate;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
