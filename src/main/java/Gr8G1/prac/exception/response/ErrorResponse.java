@@ -1,5 +1,6 @@
-package Gr8G1.prac.exception.error;
+package Gr8G1.prac.exception.response;
 
+import Gr8G1.prac.exception.exception.ExceptionCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,32 +18,32 @@ public class ErrorResponse {
   private final String code;
   private final String message;
 
-  private ErrorResponse(final ErrorCode code) {
+  private ErrorResponse(final ExceptionCode code) {
     this.errors = new ArrayList<>();
     this.code = code.getCode();
     this.status = code.getStatus();
     this.message = code.getMessage();
   }
 
-  private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
+  private ErrorResponse(final ExceptionCode code, final List<FieldError> errors) {
     this.errors = errors;
     this.code = code.getCode();
     this.status = code.getStatus();
     this.message = code.getMessage();
   }
 
-  public static ErrorResponse of(final ErrorCode code) {
+  public static ErrorResponse of(final ExceptionCode code) {
     return new ErrorResponse(code);
   }
 
   public static ErrorResponse of(MethodArgumentTypeMismatchException e) {
     final String value = e.getValue() == null ? "" : e.getValue().toString();
-    final List<ErrorResponse.FieldError> errors = ErrorResponse.FieldError.of(e.getName(), value, e.getErrorCode());
+    final List<FieldError> errors = FieldError.of(e.getName(), value, e.getErrorCode());
 
-    return new ErrorResponse(ErrorCode.INVALID_TYPE_VALUE, errors);
+    return new ErrorResponse(ExceptionCode.INVALID_TYPE_VALUE, errors);
   }
 
-  public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
+  public static ErrorResponse of(final ExceptionCode code, final BindingResult bindingResult) {
     return new ErrorResponse(code, FieldError.of(bindingResult));
   }
 
@@ -62,6 +63,7 @@ public class ErrorResponse {
     public static List<FieldError> of(final String field, final String value, final String reason) {
       List<FieldError> fieldErrors = new ArrayList<>();
       fieldErrors.add(new FieldError(field, value, reason));
+
       return fieldErrors;
     }
 

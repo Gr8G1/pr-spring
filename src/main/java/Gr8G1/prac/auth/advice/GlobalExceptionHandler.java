@@ -1,11 +1,12 @@
-package Gr8G1.prac.exception.advice;
+package Gr8G1.prac.auth.advice;
 
-import Gr8G1.prac.exception.exception.BusinessException;
-import Gr8G1.prac.exception.exception.ExceptionCode;
-import Gr8G1.prac.exception.response.ErrorResponse;
+import Gr8G1.prac.auth.exception.BusinessException;
+import Gr8G1.prac.auth.exception.ExceptionCode;
+import Gr8G1.prac.auth.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -75,15 +76,15 @@ public class GlobalExceptionHandler {
   }
 
   /*
-   * # 기타 예외 처리 (최상위)
+   * # Authentication 예외
    *
    */
-  @ExceptionHandler(Exception.class)
-  protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-    log.error("handleEntityNotFoundException", e);
+  @ExceptionHandler(BadCredentialsException.class)
+  protected ResponseEntity<ErrorResponse> handleBadCredentialsException(final BadCredentialsException e) {
+    log.error("handleBadCredentialsException", e);
 
-    final ErrorResponse response = ErrorResponse.of(ExceptionCode.INTERNAL_SERVER_ERROR);
-    return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    final ErrorResponse response = ErrorResponse.of(ExceptionCode.INVALID_CREDENTIAL_VALUE);
+    return new ResponseEntity<>(response, HttpStatus.valueOf(ExceptionCode.INVALID_CREDENTIAL_VALUE.getStatus()));
   }
 
   /*
@@ -92,10 +93,22 @@ public class GlobalExceptionHandler {
    */
   @ExceptionHandler(BusinessException.class)
   protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
-    log.error("handleEntityNotFoundException", e);
+    log.error("handleBusinessException", e);
 
-    final ExceptionCode exceptionCode = e.getExceptionCode();
+    final Gr8G1.prac.auth.exception.ExceptionCode exceptionCode = e.getExceptionCode();
     final ErrorResponse response = ErrorResponse.of(exceptionCode);
     return new ResponseEntity<>(response, HttpStatus.valueOf(exceptionCode.getStatus()));
+  }
+
+  /*
+   * # 기타 예외 처리 (최상위)
+   *
+   */
+  @ExceptionHandler(Exception.class)
+  protected ResponseEntity<ErrorResponse> handleException(Exception e) {
+    log.error("handleException", e);
+
+    final ErrorResponse response = ErrorResponse.of(ExceptionCode.INTERNAL_SERVER_ERROR);
+    return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }

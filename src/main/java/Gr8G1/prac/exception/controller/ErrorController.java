@@ -1,4 +1,4 @@
-package Gr8G1.prac.exception.cotroller;
+package Gr8G1.prac.exception.controller;
 
 import Gr8G1.prac.exception.dto.ErrorDto;
 import lombok.extern.slf4j.Slf4j;

@@ -13,6 +13,7 @@ public class ErrorDto {
 
     @Pattern(regexp = "^\\S+(\\s?\\S+)*$", message = "이름은 공백이 아니어야 합니다.")
     private String name;
+
     @Pattern(regexp = "^01([016789])-?([0-9]{4})-?([0-9]{4})$", message = "휴대폰 번호는 11자리 숫자와 '-'로 구성되어야 합니다.")
     private String phone;
 

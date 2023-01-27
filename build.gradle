@@ -12,27 +12,54 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 dependencies {
     // # Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    // # Web (MVC)
+    // # Web(MVC)
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // # Boot
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+    // # Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // # JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // # Security & Test
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // # Oauth2
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     // # Https
     implementation 'org.apache.httpcomponents:httpclient'
-
+    // # H2
+    runtimeOnly 'com.h2database:h2'
+    // # Lombok & Test
+    // ! Lombok dependency 위치가 mapStruct 보다 상위에 선어 되어야 한다. - Constructor 오류 발생
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
     // # Mapstruct
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    // # JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly	'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    // # Gson
+    implementation 'com.google.code.gson:gson'
 
+    // # Configure Annotation
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    // # Test
+    // # Security
+    testImplementation 'org.springframework.security:spring-security-test'
     // # Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // # Boot
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
